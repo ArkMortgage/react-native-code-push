@@ -54,10 +54,11 @@ React Native Code Push comes packaged with a plugin to automate some of the setu
     project(':react-native-code-push').projectDir = new File(["node", "--print", "require.resolve('react-native-code-push/package.json')"].execute(null, rootDir).text.trim(), "../android/app")
     ```
     
-2. In your `android/app/build.gradle` file, add the `codepush.gradle` file as an additional build task definition underneath `react.gradle`:
+2. In your `android/app/build.gradle` file, add the `codepush.gradle` file as an additional build task definition to the end of the file:
 
     ```gradle
     ...
+    apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
     apply from: new File(reactNativeRoot, "react.gradle")
     apply from: new File(["node", "--print", "require.resolve('react-native-code-push/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/android/codepush.gradle"
     ...
